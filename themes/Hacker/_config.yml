@@ -1,8 +1,8 @@
 menu:
-  Home: /
-  Archives: /archives
-  About: /about
-  Rss: /atom.xml
+  Home: /blog
+  Archives: /blog/archives
+  About: /blog/about
+  Rss: /blog/atom.xml
 
 # duoshuo comment
 duoshuo: false
