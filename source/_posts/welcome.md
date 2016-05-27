@@ -1,7 +1,9 @@
 ---
 title: wecatch 官方博客开放啦!
 date: 2016-05-27 11:27:14
-tags: tech, life
+tags: 
+- life
+- tech
 ---
 
 wecatch，独立自由的组织，致力于构建更好的Web产品, 并为开发者和团队提供更敏捷，稳定，灵活的Web解决方案以及专业的咨询服务

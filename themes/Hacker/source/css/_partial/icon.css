@@ -10,15 +10,15 @@
     width: 13px;
     height: 19px;
     background-color: #F03838;
-    -webkit-mask: url(../../images/icon-bookmark-fill.svg) center top no-repeat;
-    mask: url(../../images/icon-bookmark-fill.svg) center top no-repeat;
+    -webkit-mask: url(../images/icon-bookmark-fill.svg) center top no-repeat;
+    mask: url(../images/icon-bookmark-fill.svg) center top no-repeat;
 }
 
 .icon-comments {
     display: inline-block;
     width: 18px;
     height: 19px;
-    background: url(../../images/icon-bubble.svg) center top no-repeat;
+    background: url(../images/icon-bubble.svg) center top no-repeat;
     background-size: 18px 18px;
 }
 
@@ -27,7 +27,7 @@
     display: inline-block;
     width: 19px;
     height: 16px;
-    background: url(../../images/icon-tags.svg) center center no-repeat;
+    background: url(../images/icon-tags.svg) center center no-repeat;
     background-size: 19px 16px;
 }
 
@@ -35,6 +35,6 @@
     display: inline-block;
     width: 19px;
     height: 16px;
-    background: url(../../images/icon-bookmark-fill.svg) center center no-repeat;
+    background: url(../images/icon-bookmark-fill.svg) center center no-repeat;
     background-size: 19px 16px;
 }
