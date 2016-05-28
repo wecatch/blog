@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>wecatch</title>
+  <meta name="author" content="wecatch">
+  
+  <meta name="description" content="wecatch team&#39;s blog">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+  <meta property="og:site_name" content="wecatch"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/blog/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="wecatch" type="application/atom+xml">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/blog/">wecatch</a>
+  </h1>
+  <p class="site-description"></p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">官网</a></li>
+    
+      <li><a href="/blog">博客</a></li>
+    
+      <li><a href="/blog/archives">归档</a></li>
+    
+      <li><a href="/blog/about">关于</a></li>
+    
+      <li><a href="/blog/atom.xml">Rss</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/blog/2016/05/28/python-module-path-find/"><span>python的模块加载和路径查找</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2016/05/28/python-module-path-find/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-28T03:27:22.000Z">
+          2016-05-28
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><a href="http://sanyuesha.com/2016/05/28/python-module-path-find/">&#x539F;&#x6587;&#x94FE;&#x63A5;</a></p>
+<p>&#x6DF1;&#x5165;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7406;&#x89E3;&#x51E0;&#x4E2A;&#x6982;&#x5FF5;&#xFF1A;</p>
+<p><strong>module</strong>&#xFF1A;&#x6A21;&#x5757;&#xFF0C; &#x4E00;&#x4E2A; <code>py</code>&#x6587;&#x4EF6;&#x6216;&#x4EE5;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x5F62;&#x5F0F;&#x5B58;&#x5728;&#x7684;&#x53EF;&#x88AB;&#x5BFC;&#x5165;&#x7684;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6A21;&#x5757;</p>
+<p><strong>package</strong>&#xFF1A;&#x5305;&#xFF0C;&#x5305;&#x542B;&#x6709; <code>__init__</code> &#x6587;&#x4EF6;&#x7684;&#x6587;&#x4EF6;&#x5939;</p>
+<p><strong>relative path</strong>&#xFF1A;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x67D0;&#x4E2A;&#x76EE;&#x5F55;&#x7684;&#x8DEF;&#x5F84;</p>
+<p><strong>absolute path</strong>&#xFF1A;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x5168;&#x8DEF;&#x5F84;</p>
+<p><strong>&#x8DEF;&#x5F84;&#x67E5;&#x627E;</strong>&#xFF1A;python &#x89E3;&#x91CA;&#x5668;&#x67E5;&#x627E;&#x88AB;&#x5F15;&#x5165;&#x7684;&#x5305;&#x6216;&#x6A21;&#x5757;</p>
+<p><strong><code>__file__</code></strong></p>
+<p><a href="https://docs.python.org/2/reference/datamodel.html">python doc explain</a>: <code>__file__</code> is the pathname of the file from which the module was loaded, if it was loaded from a file.</p>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x662F;&#x4ECE;&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x7684;&#xFF0C;<code>__file__</code> &#x5C31;&#x662F;&#x8BE5;&#x6A21;&#x5757;&#x7684;&#x8DEF;&#x5F84;&#x540D;&#x3002;</p>
+<h3 id="python-&#x6267;&#x884C;&#x65F6;&#x662F;&#x5982;&#x4F55;&#x67E5;&#x627E;&#x5305;&#x548C;&#x6A21;&#x5757;&#x7684;"><a href="#python-&#x6267;&#x884C;&#x65F6;&#x662F;&#x5982;&#x4F55;&#x67E5;&#x627E;&#x5305;&#x548C;&#x6A21;&#x5757;&#x7684;" class="headerlink" title="python &#x6267;&#x884C;&#x65F6;&#x662F;&#x5982;&#x4F55;&#x67E5;&#x627E;&#x5305;&#x548C;&#x6A21;&#x5757;&#x7684;"></a>python &#x6267;&#x884C;&#x65F6;&#x662F;&#x5982;&#x4F55;&#x67E5;&#x627E;&#x5305;&#x548C;&#x6A21;&#x5757;&#x7684;</h3><p>1.python &#x6267;&#x884C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;</p>
+<p>python &#x6267;&#x884C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x65E0;&#x8BBA;&#x6267;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x8FD8;&#x662F;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x89E3;&#x91CA;&#x5668;&#x90FD;&#x4F1A;&#x628A;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x7684;&#x76EE;&#x5F55;&#x52A0;&#x5165;&#x5230;&#x7CFB;&#x7EDF;&#x67E5;&#x627E;&#x8DEF;&#x5F84;&#x4E2D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; <code>sys.path</code> &#x8FD9;&#x4E2A; <code>list</code> &#x4E2D;&#xFF0C;&#x800C; <code>sys.path</code> &#x53C8;&#x662F;&#x7531;&#x7CFB;&#x7EDF;&#x7684; python &#x73AF;&#x5883;&#x53D8;&#x91CF;&#x51B3;&#x5B9A;&#x7684;&#x3002;</p>
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/blog/categories/技术/">技术</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/blog/tags/python/">python</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/blog/2016/05/27/welcome/"><span>wecatch 官方博客开放啦!</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2016/05/27/welcome/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-27T03:27:14.000Z">
+          2016-05-27
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>wecatch&#xFF0C;&#x72EC;&#x7ACB;&#x81EA;&#x7531;&#x7684;&#x7EC4;&#x7EC7;&#xFF0C;&#x81F4;&#x529B;&#x4E8E;&#x6784;&#x5EFA;&#x66F4;&#x597D;&#x7684;Web&#x4EA7;&#x54C1;, &#x5E76;&#x4E3A;&#x5F00;&#x53D1;&#x8005;&#x548C;&#x56E2;&#x961F;&#x63D0;&#x4F9B;&#x66F4;&#x654F;&#x6377;&#xFF0C;&#x7A33;&#x5B9A;&#xFF0C;&#x7075;&#x6D3B;&#x7684;Web&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x4EE5;&#x53CA;&#x4E13;&#x4E1A;&#x7684;&#x54A8;&#x8BE2;&#x670D;&#x52A1;</p>
+<p>&#x672C;&#x535A;&#x5BA2;&#x81F4;&#x529B;&#x4E8E;&#x5206;&#x4EAB;&#x7A0B;&#x5E8F;&#x6280;&#x672F;&#xFF0C;&#x79D1;&#x6280;&#x751F;&#x6D3B;&#x76F8;&#x5173;&#x5185;&#x5BB9;&#xFF0C;&#x6B22;&#x8FCE;&#x5173;&#x6CE8;&#x3002;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/blog/tags/life/">life</a>, <a href="/blog/tags/tech/">tech</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav class="pagination">
+  
+  
+</nav>
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 wecatch
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
