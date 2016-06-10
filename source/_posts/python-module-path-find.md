@@ -21,13 +21,6 @@ categories:
 **路径查找**：python 解释器查找被引入的包或模块
 
 
-**`__file__`**
-
-[python doc explain](https://docs.python.org/2/reference/datamodel.html): `__file__` is the pathname of the file from which the module was loaded, if it was loaded from a file.
-
-如果一个模块是从文件加载的，`__file__` 就是该模块的路径名。
-
-
 ## python 执行时是如何查找包和模块的
 
 1.python 执行一个文件
@@ -105,6 +98,8 @@ ImportError: cannot import name Redis
 除此之外，其他与执行一个文件是相同的。
 
 ## 深入 `__file__` 变量
+
+>[python doc](https://docs.python.org/2/reference/datamodel.html): `__file__` is the pathname of the file from which the module was loaded, if it was loaded from a file. 如果一个模块是从文件加载的，`__file__` 就是该模块的路径名。
 
 顾名思义，当模块以文件的形式出现 `__file__` 指的是模块文件的路径名，以相对路径执行 `__file__` 是相对路径，以绝对路径执行 `__file__` 是绝对路径。
 
