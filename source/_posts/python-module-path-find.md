@@ -28,7 +28,7 @@ categories:
 如果一个模块是从文件加载的，`__file__` 就是该模块的路径名。
 
 
-### python 执行时是如何查找包和模块的
+## python 执行时是如何查找包和模块的
 
 1.python 执行一个文件
 
@@ -104,7 +104,7 @@ ImportError: cannot import name Redis
 
 除此之外，其他与执行一个文件是相同的。
 
-### `__file__`
+## 深入 `__file__` 变量
 
 顾名思义，当模块以文件的形式出现 `__file__` 指的是模块文件的路径名，以相对路径执行 `__file__` 是相对路径，以绝对路径执行 `__file__` 是绝对路径。
 
@@ -143,7 +143,7 @@ NameError: name '__file__' is not defined
 这是因为当前交互式shell的执行并不是以文件的形式加载，所以不存在`__file__` 这样的属性。
 
 
-### sys.argv[0]
+## 和 `__file__` 相似的 sys.argv[0]
 
 与 `__file__` 相似的一个变量是`sys.argv[0]`，区别是它用来获取主入口执行文件的变量。
 
@@ -178,7 +178,7 @@ test2.py #sys.argv[0]
 
 总的来说，`sys.argv[0]` 是获得入口执行文件路径，`__file__` 是获得任意模块文件的路径。
 
-### sys.modules
+## sys.modules 的作用
 
 既然python是在 `sys.path` 中搜索模块的，那载入的模块存放在何处？答案就是 `sys.modules`，是存放已载入模块的地方。模块一经载入，python 会把这个模块加入 `sys.modules` 中供下次载入使用，这样可以加速模块的引入，起到缓存的作用。
 
@@ -223,7 +223,7 @@ def get_module_dir(name):
 ```
   
 
-### from 和 import 语句
+## from 和 import 语句
 
 知道了 python 是如何搜索模块和保存已导入模块，我们再说说 python 模块的导入
 
@@ -250,9 +250,9 @@ python 包的导入顺序是
 能被 import 的包括：package，package 中的模块，模块中的变量。影响 import 的属性是 [`__all__`](https://docs.python.org/2/tutorial/modules.html?highlight=__all__#importing-from-a-package)， `__all__` 是个list，能够影响被 package 中 以 `from package import *`  被导出的模块，即定义在`__all__` 中的模块才会被 `from package import *` 导出。
 
 
-### summary
+## summary
 
-python 的模块导入，加载和查找还有很多可以说说的地方，尤其是动态 import， 对应python中的关键字是 __import__，感兴趣的同学可以研究一下 [tornado](https://github.com/tornadoweb/tornado/blob/master/tornado/util.py#L127)  `util` 模块下的 `import_object`。
+python 的模块导入，加载和查找还有很多可以说说的地方，尤其是动态 import， 对应python中的关键字是 `__import__`，感兴趣的同学可以研究一下 [`tornado.util`](https://github.com/tornadoweb/tornado/blob/master/tornado/util.py#L127) 模块下的 `import_object`。
 
 
 文中所有代码见：[github](https://github.com/zhyq0826/blog-code/tree/master/p2016_05_28_python_path_find)
