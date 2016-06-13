@@ -1,9 +1,9 @@
 menu:
-  官网: /
   博客: /blog
   Archives: /blog/archives
   About: /blog/about
   Rss: /blog/atom.xml
+  官网: /
 
 root: /blog
 
