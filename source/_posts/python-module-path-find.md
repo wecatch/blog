@@ -6,7 +6,7 @@ categories:
 - 技术
 ---
 
-[原文链接](http://sanyuesha.com/2016/05/28/python-module-path-find/)
+[三月沙](http://sanyuesha.com/about/) [原文链接](http://sanyuesha.com/2016/05/28/python-module-path-find/) 
 
 深入这个问题之前，我们需要理解几个概念：
 

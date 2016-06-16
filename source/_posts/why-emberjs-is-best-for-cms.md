@@ -7,7 +7,8 @@ categories:
 ---
 
 
-[原文链接](http://sanyuesha.com/2016/06/04/why-emberjs-is-best-for-cms/)
+[三月沙](http://sanyuesha.com/about/) [原文链接](http://sanyuesha.com/2016/06/04/why-emberjs-is-best-for-cms/) 
+
 
 ## emberjs 是什么
 
