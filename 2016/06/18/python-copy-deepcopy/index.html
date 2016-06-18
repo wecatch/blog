@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>你真得理解 python 的浅拷贝和深拷贝吗？ | wecatch</title>
+  <meta name="author" content="wecatch">
+  
+  <meta name="description" content="wecatch team&#39;s blog">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="你真得理解 python 的浅拷贝和深拷贝吗？"/>
+  <meta property="og:site_name" content="wecatch"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/blog/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="wecatch" type="application/atom+xml">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/blog/">wecatch</a>
+  </h1>
+  <p class="site-description"></p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/blog">博客</a></li>
+    
+      <li><a href="/blog/archives">归档</a></li>
+    
+      <li><a href="/blog/about">关于</a></li>
+    
+      <li><a href="/blog/atom.xml">Rss</a></li>
+    
+      <li><a href="/">官网</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>你真得理解 python 的浅拷贝和深拷贝吗？</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2016/06/18/python-copy-deepcopy/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-18T09:00:28.000Z">
+          2016-06-18
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><a href="http://sanyuesha.com/about/" target="_blank" rel="external">&#x4E09;&#x6708;&#x6C99;</a> <a href="http://sanyuesha.com/2016/06/18/python-copy-deepcopy/" target="_blank" rel="external">&#x539F;&#x6587;&#x94FE;&#x63A5;</a></p>
+<p>&#x4E3A;&#x4E86;&#x8BA9;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#x4E0D;&#x5BF9;&#x539F;&#x5BF9;&#x8C61;&#x4EA7;&#x751F;&#x526F;&#x4F5C;&#x7528;&#xFF0C;&#x6B64;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x4E00;&#x4EFD;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x62F7;&#x8D1D;&#xFF0C;python &#x63D0;&#x4F9B;&#x4E86; copy &#x673A;&#x5236;&#x6765;&#x5B8C;&#x6210;&#x8FD9;&#x6837;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x5757;&#x662F; <a href="https://docs.python.org/2/library/copy.html" target="_blank" rel="external">copy</a>&#x3002;</p>
+<h2 id="&#x6D45;&#x62F7;&#x8D1D;-shadow-copy"><a href="#&#x6D45;&#x62F7;&#x8D1D;-shadow-copy" class="headerlink" title="&#x6D45;&#x62F7;&#x8D1D;:shadow copy"></a>&#x6D45;&#x62F7;&#x8D1D;:shadow copy</h2><p>&#x5728; <code>copy</code> &#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x6709; <code>copy</code> &#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x6D45;&#x62F7;&#x8D1D;&#x3002;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> copy <span class="keyword">import</span> copy</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728; python &#x4E2D;&#xFF0C;&#x6807;&#x8BC6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x552F;&#x4E00;&#x8EAB;&#x4EFD;&#x7684;&#x662F;&#xFF1A;&#x5BF9;&#x8C61;&#x7684;<code>id</code>(&#x5185;&#x5B58;&#x5730;&#x5740;)&#xFF0C;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#xFF0C;&#x5BF9;&#x8C61;&#x503C;&#xFF0C;&#x800C;&#x6D45;&#x62F7;&#x8D1D;&#x5C31;&#x662F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5177;&#x6709;&#x76F8;&#x540C;&#x7C7B;&#x578B;&#xFF0C;&#x76F8;&#x540C;&#x503C;&#x4F46;&#x4E0D;&#x540C;<code>id</code>&#x7684;&#x65B0;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x5BF9;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x800C;&#x8A00;&#xFF0C;&#x5BF9;&#x8C61;&#x7684;&#x503C;&#x4E00;&#x6837;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x6709;&#x5BF9;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x6D45;&#x62F7;&#x8D1D;&#x4EA7;&#x751F;&#x7684;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x867D;&#x7136;&#x5177;&#x6709;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x7684;<code>id</code>&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x503C;&#x82E5;&#x5305;&#x542B;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x548C;&#x539F;&#x59CB;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x503C;&#x5305;&#x542B;&#x540C;&#x6837;&#x7684;&#x5F15;&#x7528;&#x3002;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> copy</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l = {<span class="string">&apos;a&apos;</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">&apos;b&apos;</span>:[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]}</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = copy.copy(l)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(l) == id(c)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="string">&apos;a&apos;</span>].append(<span class="string">&apos;4&apos;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="string">&apos;b&apos;</span>].append(<span class="string">&apos;7&apos;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l</span><br><span class="line">{<span class="string">&apos;a&apos;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&apos;4&apos;</span>], <span class="string">&apos;b&apos;</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="string">&apos;7&apos;</span>]}</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">{<span class="string">&apos;a&apos;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&apos;4&apos;</span>], <span class="string">&apos;b&apos;</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="string">&apos;7&apos;</span>]}</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>&#x53EF;&#x89C1;&#x6D45;&#x62F7;&#x8D1D;&#x4EA7;&#x751F;&#x7684;&#x65B0;&#x5BF9;&#x8C61;&#x4E2D;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x7684;&#x503C;&#x5728;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#x4F1A;&#x5BF9;&#x539F;&#x5BF9;&#x8C61;&#x7684;&#x503C;&#x4EA7;&#x751F;&#x526F;&#x4F5C;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E9B;&#x503C;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x3002;</p>
+<a id="more"></a>
+<p>&#x6D45;&#x62F7;&#x8D1D;&#x4EC5;&#x4EC5;&#x5BF9;&#x5BF9;&#x8C61;&#x81EA;&#x8EAB;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4EFD;&#x62F7;&#x8D1D;&#xFF0C;&#x800C;&#x6CA1;&#x6709;&#x5728;&#x8FDB;&#x4E00;&#x6B65;&#x5904;&#x7406;&#x5BF9;&#x8C61;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x503C;&#x3002;&#x56E0;&#x6B64;&#x4F7F;&#x7528;&#x6D45;&#x62F7;&#x8D1D;&#x7684;&#x5178;&#x578B;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x662F;&#xFF1A;&#x5BF9;&#x8C61;&#x81EA;&#x8EAB;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x7684;&#x540C;&#x65F6;&#x9700;&#x8981;&#x4FDD;&#x6301;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x503C;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#xFF0C;&#x6BD4;&#x5982; list &#x6392;&#x5E8F;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def sorted_list(olist, key=None):</span><br><span class="line">...     copied_list = copy.copy(olist)</span><br><span class="line">...     copied_list.sort(key=key)</span><br><span class="line">...     return copied_list</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; a = [3,2,1]</span><br><span class="line">&gt;&gt;&gt; b = sorted_list(a)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[3, 2, 1]</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">[1, 2, 3]</span><br></pre></td></tr></table></figure>
+<h2 id="&#x6DF1;&#x62F7;&#x8D1D;-deep-copy"><a href="#&#x6DF1;&#x62F7;&#x8D1D;-deep-copy" class="headerlink" title="&#x6DF1;&#x62F7;&#x8D1D;:deep copy"></a>&#x6DF1;&#x62F7;&#x8D1D;:deep copy</h2><p>&#x5728; <code>copy</code> &#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x6709; <code>deepcopy</code> &#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x6DF1;&#x62F7;&#x8D1D;&#x3002;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> copy <span class="keyword">import</span> deepcopy</span><br></pre></td></tr></table></figure></p>
+<p>&#x6DF1;&#x62F7;&#x8D1D;&#x4E0D;&#x4EC5;&#x4EC5;&#x62F7;&#x8D1D;&#x4E86;&#x539F;&#x59CB;&#x5BF9;&#x8C61;&#x81EA;&#x8EAB;&#xFF0C;&#x4E5F;&#x5BF9;&#x5176;&#x5305;&#x542B;&#x7684;&#x503C;&#x8FDB;&#x884C;&#x62F7;&#x8D1D;&#xFF0C;&#x5B83;&#x4F1A;&#x9012;&#x5F52;&#x7684;&#x67E5;&#x627E;&#x5BF9;&#x8C61;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x6765;&#x5B8C;&#x6210;&#x66F4;&#x6DF1;&#x5C42;&#x6B21;&#x62F7;&#x8D1D;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6DF1;&#x62F7;&#x8D1D;&#x4EA7;&#x751F;&#x7684;&#x526F;&#x672C;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x4FEE;&#x6539;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x62C5;&#x5FC3;&#x4F1A;&#x5F15;&#x8D77;&#x539F;&#x59CB;&#x503C;&#x7684;&#x6539;&#x53D8;&#x3002;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> copy</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l = {<span class="string">&apos;a&apos;</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">&apos;b&apos;</span>:[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]}</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = copy.deepcopy(l)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(l) == id(c)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="string">&apos;a&apos;</span>].append(<span class="string">&apos;4&apos;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="string">&apos;b&apos;</span>].append(<span class="string">&apos;7&apos;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l</span><br><span class="line">{<span class="string">&apos;a&apos;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&apos;4&apos;</span>], <span class="string">&apos;b&apos;</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]}</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">{<span class="string">&apos;a&apos;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="string">&apos;b&apos;</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="string">&apos;7&apos;</span>]}</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x6DF1;&#x62F7;&#x8D1D;&#x5E76;&#x975E;&#x5B8C;&#x5B8C;&#x5168;&#x5168;&#x9012;&#x5F52;&#x67E5;&#x627E;&#x6240;&#x6709;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x65E6;&#x5BF9;&#x8C61;&#x5F15;&#x7528;&#x4E86;&#x81EA;&#x8EAB;&#xFF0C;&#x5B8C;&#x5168;&#x9012;&#x5F52;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#x3002;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x88AB;&#x62F7;&#x8D1D;&#x4E86;&#xFF0C;python &#x4F1A;&#x5BF9;&#x8BE5;&#x5BF9;&#x8C61;&#x505A;&#x4E2A;&#x6807;&#x8BB0;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x9700;&#x8981;&#x62F7;&#x8D1D;&#x7684;&#x5BF9;&#x8C61;&#x5F15;&#x7528;&#x7740;&#x8BE5;&#x5BF9;&#x8C61;&#xFF0C;<strong>&#x5B83;&#x4EEC;&#x7684;&#x62F7;&#x8D1D;&#x5176;&#x5B9E;&#x6307;&#x5411;&#x7684;&#x662F;&#x540C;&#x4E00;&#x4EFD;&#x62F7;&#x8D1D;</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = [a,a]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line">[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">1</span>, <span class="number">2</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = deepcopy(b)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b[<span class="number">0</span>]) == id(c[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b[<span class="number">0</span>]) == id(b[<span class="number">1</span>])</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">1</span>, <span class="number">2</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="number">0</span>].append(<span class="number">3</span>)  <span class="comment">#c list &#x4E2D;&#x5305;&#x542B;&#x7684;&#x4E24;&#x4EFD;&#x62F7;&#x8D1D;&#x6307;&#x5411;&#x540C;&#x4E00;&#x5904;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">[[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="&#x81EA;&#x5B9A;&#x4E49;&#x62F7;&#x8D1D;&#x673A;&#x5236;"><a href="#&#x81EA;&#x5B9A;&#x4E49;&#x62F7;&#x8D1D;&#x673A;&#x5236;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x62F7;&#x8D1D;&#x673A;&#x5236;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x62F7;&#x8D1D;&#x673A;&#x5236;</h2><p>&#x4F7F;&#x7528; <code>_copy_</code> &#x548C; <code>__deepcopy__</code> &#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x5BF9;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x62F7;&#x8D1D;&#x7684;&#x5B9A;&#x5236;&#x3002;&#x8FD9;&#x91CC;&#x4E0D;&#x5C55;&#x5F00;&#x4E86;&#xFF0C;&#x6709;&#x673A;&#x4F1A;&#x518D;&#x63A2;&#x8BA8;&#x81EA;&#x5B9A;&#x4E49;&#x62F7;&#x8D1D;&#x3002;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/blog/categories/技术/">技术</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/blog/tags/python/">python</a>, <a href="/blog/tags/对象状态/">对象状态</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 wecatch
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
