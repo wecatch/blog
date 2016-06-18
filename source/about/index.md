@@ -11,10 +11,19 @@ wecatch，独立自由的组织，致力于构建更好的Web产品, 并为开�
 
 本博客致力于分享程序技术，科技生活相关内容，欢迎关注。
 
-### team
+### Team Members
 
-+ [三月沙](http://sanyuesha.com/)
+**三月沙**
 
-+ [Listen](http://fangjueci.com/)
+- [blog](http://sanyuesha.com/)
+- [github](https://github.com/zhyq0826)
 
-+ [落在深海](http://braavos.me/)
+**Listen**
+
+- [blog](http://fangjueci.com/)
+- [github](https://github.com/listen-lavender)
+
+**落在深海**
+
+- [blog](http://braavos.me/)
+- [github](https://github.com/jerryshew)
