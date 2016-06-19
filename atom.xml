@@ -4,9 +4,9 @@
   
   <link href="/blog/atom.xml" rel="self"/>
   
-  <link href="http://blog.wecatch.me/"/>
+  <link href="http://wecatch.me/"/>
   <updated>2016-06-18T09:09:40.000Z</updated>
-  <id>http://blog.wecatch.me/</id>
+  <id>http://wecatch.me/</id>
   
   <author>
     <name>wecatch</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>你真得理解 python 的浅拷贝和深拷贝吗？</title>
-    <link href="http://blog.wecatch.me/2016/06/18/python-copy-deepcopy/"/>
-    <id>http://blog.wecatch.me/2016/06/18/python-copy-deepcopy/</id>
+    <link href="http://wecatch.me/2016/06/18/python-copy-deepcopy/"/>
+    <id>http://wecatch.me/2016/06/18/python-copy-deepcopy/</id>
     <published>2016-06-18T09:00:28.000Z</published>
     <updated>2016-06-18T09:09:40.000Z</updated>
     
@@ -52,19 +52,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://blog.wecatch.me/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://wecatch.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="python" scheme="http://blog.wecatch.me/tags/python/"/>
+      <category term="python" scheme="http://wecatch.me/tags/python/"/>
     
-      <category term="对象状态" scheme="http://blog.wecatch.me/tags/%E5%AF%B9%E8%B1%A1%E7%8A%B6%E6%80%81/"/>
+      <category term="对象状态" scheme="http://wecatch.me/tags/%E5%AF%B9%E8%B1%A1%E7%8A%B6%E6%80%81/"/>
     
   </entry>
   
   <entry>
     <title>为什么选择 emberjs 开发 dashboard 和 CMS 类系统</title>
-    <link href="http://blog.wecatch.me/2016/06/04/why-emberjs-is-best-for-cms/"/>
-    <id>http://blog.wecatch.me/2016/06/04/why-emberjs-is-best-for-cms/</id>
+    <link href="http://wecatch.me/2016/06/04/why-emberjs-is-best-for-cms/"/>
+    <id>http://wecatch.me/2016/06/04/why-emberjs-is-best-for-cms/</id>
     <published>2016-06-04T10:35:35.000Z</published>
     <updated>2016-06-16T15:17:00.000Z</updated>
     
@@ -265,17 +265,17 @@
     
     </summary>
     
-      <category term="技术" scheme="http://blog.wecatch.me/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://wecatch.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="emberjs" scheme="http://blog.wecatch.me/tags/emberjs/"/>
+      <category term="emberjs" scheme="http://wecatch.me/tags/emberjs/"/>
     
   </entry>
   
   <entry>
     <title>python的模块加载和路径查找</title>
-    <link href="http://blog.wecatch.me/2016/05/28/python-module-path-find/"/>
-    <id>http://blog.wecatch.me/2016/05/28/python-module-path-find/</id>
+    <link href="http://wecatch.me/2016/05/28/python-module-path-find/"/>
+    <id>http://wecatch.me/2016/05/28/python-module-path-find/</id>
     <published>2016-05-28T03:27:22.000Z</published>
     <updated>2016-06-16T15:21:55.000Z</updated>
     
@@ -362,17 +362,17 @@
     
     </summary>
     
-      <category term="技术" scheme="http://blog.wecatch.me/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://wecatch.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="python" scheme="http://blog.wecatch.me/tags/python/"/>
+      <category term="python" scheme="http://wecatch.me/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>wecatch 官方博客开放啦!</title>
-    <link href="http://blog.wecatch.me/2016/05/27/welcome/"/>
-    <id>http://blog.wecatch.me/2016/05/27/welcome/</id>
+    <link href="http://wecatch.me/2016/05/27/welcome/"/>
+    <id>http://wecatch.me/2016/05/27/welcome/</id>
     <published>2016-05-27T03:27:14.000Z</published>
     <updated>2016-05-28T00:14:49.000Z</updated>
     
@@ -387,9 +387,9 @@
     </summary>
     
     
-      <category term="life" scheme="http://blog.wecatch.me/tags/life/"/>
+      <category term="life" scheme="http://wecatch.me/tags/life/"/>
     
-      <category term="tech" scheme="http://blog.wecatch.me/tags/tech/"/>
+      <category term="tech" scheme="http://wecatch.me/tags/tech/"/>
     
   </entry>
   
