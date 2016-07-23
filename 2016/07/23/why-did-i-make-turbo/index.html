@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>我为什么创造了 turbo 这个后端的轮子 | wecatch</title>
+  <meta name="author" content="wecatch">
+  
+  <meta name="description" content="wecatch team&#39;s blog">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="我为什么创造了 turbo 这个后端的轮子"/>
+  <meta property="og:site_name" content="wecatch"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/blog/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="wecatch" type="application/atom+xml">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/blog/">wecatch</a>
+  </h1>
+  <p class="site-description"></p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/blog">博客</a></li>
+    
+      <li><a href="/blog/archives">归档</a></li>
+    
+      <li><a href="/blog/about">关于</a></li>
+    
+      <li><a href="/blog/atom.xml">Rss</a></li>
+    
+      <li><a href="/">官网</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>我为什么创造了 turbo 这个后端的轮子</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2016/07/23/why-did-i-make-turbo/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-07-23T11:05:01.000Z">
+          2016-07-23
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><a href="http://sanyuesha.com/about/" target="_blank" rel="external">&#x4E09;&#x6708;&#x6C99;</a> <a href="http://sanyuesha.com/2016/07/23/why-did-i-make-turbo/" target="_blank" rel="external">&#x539F;&#x6587;&#x94FE;&#x63A5;</a></p>
+<blockquote>
+<p>turbo &#x4E0E;&#x5176;&#x8BF4;&#x662F;&#x4E00;&#x4E2A; framework &#xFF0C;&#x4E0D;&#x5982;&#x8BF4;&#x662F;&#x4E00;&#x4E2A;&#x540E;&#x7AEF;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</p>
+</blockquote>
+<h2 id="turbo-&#x8BDE;&#x751F;&#x7684;&#x80CC;&#x666F;"><a href="#turbo-&#x8BDE;&#x751F;&#x7684;&#x80CC;&#x666F;" class="headerlink" title="turbo &#x8BDE;&#x751F;&#x7684;&#x80CC;&#x666F;"></a>turbo &#x8BDE;&#x751F;&#x7684;&#x80CC;&#x666F;</h2><p>tornado &#x662F;&#x5F02;&#x6B65;&#x975E;&#x963B;&#x585E;&#x7684; web &#x670D;&#x52A1;&#x5668;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x662F;&#x4E00;&#x4E2A; web framework&#xFF0C;&#x529F;&#x80FD;&#x7B80;&#x5355;&#x4F46;&#x5B8C;&#x5168;&#x591F;&#x7528;&#x3002;</p>
+<p>&#x539F;&#x4E1C;&#x5BB6;&#x7684;&#x6280;&#x672F;&#x6808;&#x662F;&#xFF1A;tornado&#x3001;mongodb&#x3001;redis&#x3001;openresty&#xFF0C;&#x6700;&#x5927;&#x7684;&#x670D;&#x52A1;&#x6BCF;&#x5929;&#x670D;&#x52A1;&#x7684;&#x72EC;&#x7ACB;&#x7528;&#x6237;&#x6709;&#x4E0A;&#x767E;&#x4E07;&#x3002;&#x65E9;&#x671F;&#x5927;&#x90E8;&#x5206;&#x9879;&#x76EE;&#x5B8C;&#x5168;&#x4F7F;&#x7528; tornado &#x6700;&#x539F;&#x59CB;&#x7684;&#x65B9;&#x5F0F;&#x6784;&#x5EFA;&#xFF0C;&#x4E00;&#x4E2A; main &#x6587;&#x4EF6;&#x5305;&#x542B;&#x51E0;&#x767E;&#x4E2A;&#x8DEF;&#x7531;&#xFF0C;&#x6240;&#x6709;&#x7684; handler &#x5206;&#x5E03;&#x5728;&#x5341;&#x51E0;&#x4E2A;&#x5927;&#x5927;&#x5C0F;&#x5C0F;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x9762;&#xFF0C;&#x9879;&#x76EE;&#x57FA;&#x672C;&#x7684;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x5305;&#x542B;&#xFF1A;</p>
+<ul>
+<li>&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7684; dal &#x5C42;(&#x6570;&#x636E;&#x62BD;&#x8C61;)</li>
+<li>&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;(db)</li>
+<li>&#x914D;&#x7F6E;(conf)</li>
+<li>&#x5DE5;&#x5177;(utils)</li>
+<li>&#x7F13;&#x5B58;(cache)</li>
+<li>&#x7B2C;&#x4E09;&#x65B9;&#x5E93;(lib)</li>
+</ul>
+<p>&#x968F;&#x7740;&#x9879;&#x76EE;&#x7684;&#x4EE3;&#x7801;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C;&#x591A;&#x4E2A;&#x7279;&#x6027;&#x5F00;&#x53D1;&#x5E38;&#x5E38;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#xFF0C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7ECF;&#x5E38;&#x8981;&#x975E;&#x5E38;&#x5C0F;&#x5FC3;&#x5730;&#x5E94;&#x5BF9;&#x4EE3;&#x7801;&#x7684;&#x66F4;&#x6539;&#xFF0C;&#x5373;&#x4F7F;&#x5982;&#x6B64;&#xFF0C;&#x51B2;&#x7A81;&#x4F9D;&#x7136;&#x65F6;&#x5E38;&#x53D1;&#x751F;&#xFF0C;&#x4EE3;&#x7801;&#x7684;&#x53EF;&#x7EF4;&#x62A4;&#x6027;&#x548C;&#x5065;&#x58EE;&#x6027;&#x65E5;&#x76CA;&#x53D8;&#x5DEE;&#x3002;</p>
+<p>&#x521B;&#x4E1A;&#x516C;&#x53F8;&#x7531;&#x4E8E;&#x4E1A;&#x52A1;&#x9762;&#x4E34;&#x98DE;&#x901F;&#x589E;&#x957F;&#xFF0C;&#x591A;&#x6761;&#x4E1A;&#x52A1;&#x7EBF;&#x9F50;&#x5934;&#x5E76;&#x8FDB;&#xFF0C;&#x5F00;&#x53D1;&#x56E2;&#x961F;&#x5F80;&#x5F80;&#x8981;&#x7EF4;&#x62A4;&#x5F88;&#x591A;&#x4E2A;&#x9879;&#x76EE;&#xFF0C;&#x6709;&#x7684;&#x9879;&#x76EE;&#x751F;&#x547D;&#x5468;&#x671F;&#x5F88;&#x77ED;&#xFF0C;&#x4E00;&#x6B21;&#x6D3B;&#x52A8;&#x5C31;&#x7ED3;&#x675F;&#x4E86;&#xFF0C;&#x6709;&#x7684;&#x9879;&#x76EE;&#x8981;&#x5BF9;&#x5916;&#x5408;&#x4F5C;&#xFF0C;&#x968F;&#x5408;&#x4F5C;&#x7684;&#x7ED3;&#x675F;&#x800C;&#x7ED3;&#x675F;&#xFF0C;&#x6709;&#x7684;&#x9879;&#x76EE;&#x670D;&#x52A1;&#x65B0;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x9700;&#x8981;&#x5FEB;&#x901F;&#x6784;&#x5EFA;&#x3002;&#x4E0D;&#x540C;&#x7684;&#x9879;&#x76EE;&#x7531;&#x4E0D;&#x540C;&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x521B;&#x5EFA;&#xFF0C;&#x521B;&#x5EFA;&#x9879;&#x76EE;&#x7684;&#x65B9;&#x5F0F;&#x57FA;&#x672C;&#x662F; copy &#x65E7;&#x9879;&#x76EE;&#xFF0C;&#x6BD4;&#x8F83;&#x539F;&#x59CB;&#xFF0C;&#x5BB9;&#x6613;&#x51FA;&#x9519;&#x3002;&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x9879;&#x76EE;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;&#x968F;&#x7740;&#x4E1A;&#x52A1;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x5DEE;&#x522B;&#x6E10;&#x6E10;&#x51F8;&#x663E;&#xFF0C;&#x91CD;&#x590D;&#x7684;&#x529F;&#x80FD;&#x6027;&#x4EE3;&#x7801;&#x548C;&#x5DE5;&#x5177;&#x6027;&#x4EE3;&#x7801;&#x4E5F;&#x9010;&#x6E10;&#x53D8;&#x591A;&#x3002;</p>
+<a id="more"></a>
+<p>&#x5728;&#x8FD9;&#x6837;&#x7684;&#x80CC;&#x666F;&#x4E4B;&#x4E0B;&#xFF0C;&#x5F71;&#x54CD;&#x540E;&#x7AEF;&#x5F00;&#x53D1;&#x6548;&#x7387;&#x548C;&#x5F00;&#x53D1;&#x8D28;&#x91CF;&#x95EE;&#x9898;&#x4E3B;&#x8981;&#x53EF;&#x4EE5;&#x62BD;&#x8C61;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li>&#x5927;&#x9879;&#x76EE;&#x8DEF;&#x7531;&#x591A;&#xFF0C;&#x4E0D;&#x6613;&#x7BA1;&#x7406;&#xFF0C;&#x4E0D;&#x6613;&#x53D8;&#x66F4;</li>
+<li>&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x5206;&#x5C42;&#x4E0D;&#x591F;&#xFF0C;&#x534F;&#x540C;&#x5F00;&#x53D1;&#x56F0;&#x96BE;</li>
+<li>&#x6784;&#x5EFA;&#x6CA1;&#x6709;&#x6807;&#x51C6;&#xFF0C;&#x6DF7;&#x4E71;&#x4E0D;&#x582A;&#xFF0C;&#x53EF;&#x7EF4;&#x62A4;&#x6027;&#x5DEE;</li>
+<li>&#x91CD;&#x590D;&#x6027;&#x4EE3;&#x7801;&#x53EF;&#x5171;&#x4EAB;&#x6027;&#x5DEE;&#xFF0C;&#x4E0D;&#x6613;&#x63D2;&#x62D4;</li>
+<li>tornado &#x5929;&#x751F;&#x539F;&#x59CB;&#xFF0C;&#x6CA1;&#x6709; Session&#x3001;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x3001;&#x914D;&#x5957;&#x7684; mongodb ORM&#x3001;&#x7F13;&#x5B58;&#x7BA1;&#x7406;&#x3001;RESTFul&#x7B49;&#x4E30;&#x5BCC;&#x7279;&#x6027;&#x8F85;&#x4EE5;&#x63D0;&#x9AD8;&#x5F00;&#x53D1;&#x6548;&#x7387;&#x3002;</li>
+</ul>
+<p>turbo &#x5C31;&#x662F;&#x4E3A;&#x89E3;&#x51B3;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x800C;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x56E0;&#x800C; turbo &#x66F4;&#x50CF;&#x662F;&#x4E00;&#x4E2A;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</p>
+<h2 id="turbo-&#x5177;&#x6709;&#x4EC0;&#x4E48;&#x7279;&#x6027;"><a href="#turbo-&#x5177;&#x6709;&#x4EC0;&#x4E48;&#x7279;&#x6027;" class="headerlink" title="turbo &#x5177;&#x6709;&#x4EC0;&#x4E48;&#x7279;&#x6027;"></a>turbo &#x5177;&#x6709;&#x4EC0;&#x4E48;&#x7279;&#x6027;</h2><ul>
+<li>&#x9879;&#x76EE;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF0C;&#x4E00;&#x952E;&#x751F;&#x6210;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x548C; app &#x7ED3;&#x6784;</li>
+<li>Session&#xFF0C;&#x63D0;&#x4F9B;&#x7075;&#x6D3B;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;</li>
+<li>&#x7B80;&#x5355;&#x7684; mongodb ORM&#xFF0C;&#x548C; mongoose &#x76F8;&#x6BD4;&#xFF0C;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x751A;&#x81F3;&#x7C97;&#x7CD9;&#xFF0C;&#x4F46;&#x8DB3;&#x591F;&#x7528;&#x4E86;</li>
+<li>&#x4E30;&#x5BCC;&#x4E14;&#x9AD8;&#x5EA6;&#x7EDF;&#x4E00;&#x7684;&#x76EE;&#x5F55;&#x5212;&#x5206;&#xFF0C;&#x9879;&#x76EE;&#x518D;&#x5927;&#x4E5F;&#x4E0D;&#x6015;</li>
+<li>&#x4EE3;&#x7801;&#x53EF;&#x63D2;&#x62D4;&#xFF0C;&#x6613;&#x79FB;&#x690D;&#xFF0C;&#x6613;&#x7EF4;&#x62A4;</li>
+<li>&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5B9E;&#x73B0; RESTFul &#x98CE;&#x683C;&#x7684; api</li>
+<li>&#x7075;&#x6D3B;&#x7684;&#x8DEF;&#x7531;&#x7EC4;&#x7EC7;&#x7ED3;&#x6784;&#xFF0C;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x91CD;&#x6784;&#x548C;&#x67E5;&#x627E;</li>
+</ul>
+<h4 id="&#x4E00;&#x952E;&#x6784;&#x5EFA;"><a href="#&#x4E00;&#x952E;&#x6784;&#x5EFA;" class="headerlink" title="&#x4E00;&#x952E;&#x6784;&#x5EFA;"></a>&#x4E00;&#x952E;&#x6784;&#x5EFA;</h4><p>&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x4E00;&#x952E;&#x751F;&#x6210;&#xFF0C;&#x4E0D;&#x518D;&#x662F;&#x4ECE;&#x65E7;&#x9879;&#x76EE;&#x62F7;&#x8D1D;&#xFF0C;&#x7ED3;&#x6784;&#x4E00;&#x81F4;&#xFF0C;&#x9AD8;&#x5EA6;&#x7EDF;&#x4E00;&#xFF0C;&#x53EF;&#x7EF4;&#x62A4;&#x6027;&#x53D8;&#x5F3A;&#x3002;</p>
+<h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><p>&#x81EA;&#x5E26; Session&#xFF0C;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x53D8;&#x66F4;&#xFF0C;&#x7075;&#x6D3B;&#x6027;&#x5F3A;&#x3002;</p>
+<h4 id="&#x7B80;&#x5355;&#x7684;-mongodb-ORM"><a href="#&#x7B80;&#x5355;&#x7684;-mongodb-ORM" class="headerlink" title="&#x7B80;&#x5355;&#x7684; mongodb ORM"></a>&#x7B80;&#x5355;&#x7684; mongodb ORM</h4><p>ORM &#x63D0;&#x4F9B;&#x6700;&#x57FA;&#x672C;&#x7684; collection &#x7ED3;&#x6784;&#x5230;&#x4EE3;&#x7801;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x8868;&#x7ED3;&#x6784;&#x6E05;&#x6670;&#x660E;&#x4E86;&#xFF0C;&#x589E;&#x5220;&#x6539;&#x5747;&#x53EF;&#x7075;&#x6D3B;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x68C0;&#x67E5;&#x3002;</p>
+<h4 id="&#x4E30;&#x5BCC;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5212;&#x5206;"><a href="#&#x4E30;&#x5BCC;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5212;&#x5206;" class="headerlink" title="&#x4E30;&#x5BCC;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5212;&#x5206;"></a>&#x4E30;&#x5BCC;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5212;&#x5206;</h4><p>&#x4E25;&#x683C;&#x5B9A;&#x4E49;&#x4E86;&#x5404;&#x4E2A;&#x76EE;&#x5F55;&#x7684;&#x7ED3;&#x6784;&#x7684;&#x4F5C;&#x7528;&#x4EE5;&#x53CA;&#x5C42;&#x6B21;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x822C;&#x5927;&#x578B;&#x9879;&#x76EE;&#x6240;&#x9700;&#x7684;&#x5404;&#x79CD;&#x76EE;&#x5F55;&#x5212;&#x5206;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x251C;&#x2500;&#x2500; README.md</span><br><span class="line">&#x251C;&#x2500;&#x2500; app-server <span class="comment"># &#x4E1A;&#x52A1; server</span></span><br><span class="line">&#x251C;&#x2500;&#x2500; config <span class="comment"># &#x5168;&#x5C40;&#x914D;&#x7F6E;</span></span><br><span class="line">&#x251C;&#x2500;&#x2500; db <span class="comment"># db &#x8FDE;&#x63A5;</span></span><br><span class="line">&#x251C;&#x2500;&#x2500; helpers <span class="comment"># &#x5168;&#x5C40;&#x4E1A;&#x52A1;&#x903B;&#x8F91;</span></span><br><span class="line">&#x251C;&#x2500;&#x2500; lib <span class="comment"># &#x7B2C;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x5E93;</span></span><br><span class="line">&#x251C;&#x2500;&#x2500; models <span class="comment"># &#x8868;&#x7ED3;&#x6784;</span></span><br><span class="line">&#x251C;&#x2500;&#x2500; script <span class="comment"># &#x4E00;&#x6B21;&#x6027;&#x811A;&#x672C;</span></span><br><span class="line">&#x251C;&#x2500;&#x2500; service <span class="comment"># &#x4E1A;&#x52A1;&#x6027;&#x5DE5;&#x5177;</span></span><br><span class="line">&#x251C;&#x2500;&#x2500; store <span class="comment"># &#x5168;&#x5C40;&#x72B6;&#x6001;&#x7BA1;&#x7406;</span></span><br><span class="line">&#x251C;&#x2500;&#x2500; task <span class="comment"># &#x5F02;&#x6B65;&#x4EFB;&#x52A1;</span></span><br><span class="line">&#x251C;&#x2500;&#x2500; utils <span class="comment"># &#x975E;&#x4E1A;&#x52A1;&#x6027;&#x5DE5;&#x5177;</span></span><br></pre></td></tr></table></figure>
+<h4 id="&#x4EE3;&#x7801;&#x53EF;&#x63D2;&#x62D4;-&#x6613;&#x79FB;&#x690D;"><a href="#&#x4EE3;&#x7801;&#x53EF;&#x63D2;&#x62D4;-&#x6613;&#x79FB;&#x690D;" class="headerlink" title="&#x4EE3;&#x7801;&#x53EF;&#x63D2;&#x62D4;, &#x6613;&#x79FB;&#x690D;"></a>&#x4EE3;&#x7801;&#x53EF;&#x63D2;&#x62D4;, &#x6613;&#x79FB;&#x690D;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apps</span><br><span class="line">&#x251C;&#x2500;&#x2500; __init__.py</span><br><span class="line">&#x251C;&#x2500;&#x2500; app</span><br><span class="line">&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; __init__.py</span><br><span class="line">&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; app.py</span><br><span class="line">&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; base.py</span><br><span class="line">&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; setting.py</span><br><span class="line">&#x251C;&#x2500;&#x2500; base.py</span><br><span class="line">&#x251C;&#x2500;&#x2500; settings.py</span><br></pre></td></tr></table></figure>
+<p>&#x6BCF;&#x4E2A;&#x4E1A;&#x52A1; app &#x90FD;&#x5177;&#x6709;&#x4E00;&#x6837;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x914D;&#x7F6E;&#x548C;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x968F;&#x7740;&#x4E1A;&#x52A1;&#x6240;&#x9700;&#x5206;&#x5E03;&#x5728;&#x5404;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x5C42;&#x6B21;&#xFF0C;&#x62BD;&#x8C61;&#x7A0B;&#x5EA6;&#x8D8A;&#x9AD8;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x6240;&#x5728;&#x5C42;&#x6B21;&#x8D8A;&#x9AD8;&#xFF0C;&#x6BD4;&#x5982;&#x5168;&#x5C40;&#x5408;&#x6CD5;&#x6027;&#x68C0;&#x67E5;&#x53EF;&#x4EE5;&#x653E;&#x7F6E;&#x5728; <code>apps/base.py</code> &#x4E2D;&#xFF0C;&#x8D8A;&#x5177;&#x4F53;&#x7684;&#x4E1A;&#x52A1;&#x6240;&#x5728;&#x7684;&#x5C42;&#x6B21;&#x8D8A;&#x4F4E;&#xFF0C;&#x6BD4;&#x5982;&#x5177;&#x4F53;&#x7684;&#x6CE8;&#x518C;&#x767B;&#x5F55;&#x903B;&#x8F91;&#x53EF;&#x4EE5;&#x653E;&#x7F6E;&#x5728; <code>apps/app/app.py</code> &#x4E2D;&#x3002;&#x5982;&#x679C;&#x4E1A;&#x52A1;&#x53D1;&#x751F;&#x53D8;&#x66F4;&#xFF0C;&#x4E1A;&#x52A1;&#x76EE;&#x5F55; <code>app</code> &#x53EF;&#x5B8C;&#x6574;&#x79FB;&#x690D;&#x3002;</p>
+<p>&#x6240;&#x6709;&#x4E1A;&#x52A1; <code>app</code> &#x90FD;&#x5FC5;&#x987B;&#x5728; <code>apps/settings.py</code> &#x4E0B;&#x6CE8;&#x518C;&#x624D;&#x80FD;&#x751F;&#x6548;&#xFF0C;&#x4E0A;&#x4E0B;&#x7EBF; so easy.</p>
+<h4 id="RESTFul-api"><a href="#RESTFul-api" class="headerlink" title="RESTFul api"></a>RESTFul api</h4><p>http &#x534F;&#x8BAE;&#x6240;&#x652F;&#x6301;&#x7684;&#x65B9;&#x6CD5;&#x90FD;&#x53EF;&#x4EE5;&#x5728; turbo &#x4E2D;&#x4EE5;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x65B9;&#x5F0F;&#x533A;&#x5206;&#x6765;&#x5B9E;&#x73B0;&#x666E;&#x901A;&#x9875;&#x9762; render &#x548C;&#x63A5;&#x53E3; api</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># render </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># api  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GET</span><span class="params">(self)</span>:</span></span><br><span class="line">    self._data = {<span class="string">&apos;username&apos;</span>: <span class="string">&apos;zhyq0826&apos;</span>}</span><br></pre></td></tr></table></figure>
+<h4 id="&#x7075;&#x6D3B;&#x7684;&#x8DEF;&#x7531;"><a href="#&#x7075;&#x6D3B;&#x7684;&#x8DEF;&#x7531;" class="headerlink" title="&#x7075;&#x6D3B;&#x7684;&#x8DEF;&#x7531;"></a>&#x7075;&#x6D3B;&#x7684;&#x8DEF;&#x7531;</h4><p>&#x8DEF;&#x7531;&#x7D27;&#x968F;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;</p>
+<ul>
+<li>register_group_urls</li>
+<li>register_url</li>
+</ul>
+<p>&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#x8DEF;&#x7531;&#x7684;&#x6CE8;&#x518C;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">register.register_group_urls(<span class="string">&apos;&apos;</span>, [</span><br><span class="line">    (<span class="string">&apos;/&apos;</span>, app.HomeHandler),</span><br><span class="line">    (<span class="string">&apos;/index&apos;</span>, app.HomeHandler, <span class="string">&apos;index&apos;</span>),</span><br><span class="line">    (<span class="string">&apos;/hello&apos;</span>, app.HomeHandler, <span class="string">&apos;home&apos;</span>),</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">register.register_url(<span class="string">&apos;/v1/hello&apos;</span>, app.ApiHandler)</span><br></pre></td></tr></table></figure>
+<p>&#x53EF;&#x4EE5;&#x5341;&#x5206;&#x65B9;&#x4FBF;&#x7684;&#x66F4;&#x6539;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#x3002;</p>
+<h4 id="&#x96C6;&#x6210;&#x5F88;&#x591A;&#x5B9E;&#x7528;&#x7684;&#x529F;&#x80FD;&#x7279;&#x6027;"><a href="#&#x96C6;&#x6210;&#x5F88;&#x591A;&#x5B9E;&#x7528;&#x7684;&#x529F;&#x80FD;&#x7279;&#x6027;" class="headerlink" title="&#x96C6;&#x6210;&#x5F88;&#x591A;&#x5B9E;&#x7528;&#x7684;&#x529F;&#x80FD;&#x7279;&#x6027;"></a>&#x96C6;&#x6210;&#x5F88;&#x591A;&#x5B9E;&#x7528;&#x7684;&#x529F;&#x80FD;&#x7279;&#x6027;</h4><p>&#x5728;&#x4F7F;&#x7528;mongodb &#x548C; tornado &#x7684;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#x9047;&#x5230;&#x4E86;&#x5404;&#x5F0F;&#x5404;&#x6837;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x800C; turbo &#x81EA;&#x8EAB;&#x5728;&#x53D1;&#x5C55;&#x8FC7;&#x7A0B;&#x4E2D;&#x96C6;&#x6210;&#x4E86;&#x5F88;&#x591A;&#x5C0F;&#x529F;&#x80FD;&#xFF0C;&#x975E;&#x5E38;&#x5B9E;&#x7528;&#x3002;</p>
+<p>1.&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x884C;&#x4E00;&#x952E;&#x751F;&#x6210;&#x6240;&#x6709; collection &#x7684;&#x7D22;&#x5F15;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">turbo-admin index &lt;model_name&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2.&#x7C7B;&#x4F3C; flux &#x7684;&#x72B6;&#x6001;&#x548C;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x673A;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x7BA1;&#x7406;&#x548C;&#x66F4;&#x6539;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x72B6;&#x6001;&#xFF0C;&#x6B64;&#x7279;&#x6027;&#x53EF;&#x4EE5;&#x7528;&#x4EE5;&#x8BF7;&#x6C42;&#x7EDF;&#x8BA1;&#xFF0C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7EDF;&#x8BA1;&#x7B49;&#x65B9;&#x9762;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#user.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> turbo.flux <span class="keyword">import</span> Mutation, register, State</span><br><span class="line"></span><br><span class="line">mutation = Mutation(__file__)</span><br><span class="line">state = State(__file__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@register(mutation)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">increase_rank</span><span class="params">(rank)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> rank+<span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@register(mutation)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dec_rank</span><span class="params">(rank)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> rank<span class="number">-1</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#actions.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> turbo.flux <span class="keyword">import</span> Mutation, register, dispatch, register_dispatch</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> mutation_types</span><br><span class="line"></span><br><span class="line"><span class="meta">@register_dispatch(&apos;user&apos;, mutation_types.INCREASE)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">increase</span><span class="params">(rank)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrease</span><span class="params">(rank)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> dispatch(<span class="string">&apos;user&apos;</span>, mutation_types.DECREASE, rank)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@register_dispatch(&apos;metric&apos;, &apos;inc_qps&apos;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inc_qps</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>3.mongodb &#x8BFB;&#x5199;&#x8C03;&#x7528; hook&#xFF0C;&#x5229;&#x7528;&#x8BE5; hook &#xFF0C;&#x53EF;&#x4EE5;&#x7EDF;&#x8BA1; mongodb &#x8BFB;&#x5199;&#x8C03;&#x7528;&#x72B6;&#x51B5;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">collection_method_call</span><span class="params">(turbo_connect_ins, name)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">outwrapper</span><span class="params">(func)</span>:</span></span><br><span class="line"><span class="meta">        @functools.wraps(func)</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> name <span class="keyword">in</span> turbo_connect_ins._write_operators:</span><br><span class="line">                turbo_connect_ins._model_ins.write_action_call(name, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> name <span class="keyword">in</span> turbo_connect_ins._read_operators:</span><br><span class="line">                turbo_connect_ins._model_ins.read_action_call(name, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> outwrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Model</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write_action_call</span><span class="params">(self, name, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span><br><span class="line">        execute when write action occurs, note: in this method write action must be called asynchronously</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">read_action_call</span><span class="params">(self, name, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span><br><span class="line">        execute when read action occurs, note: in this method read action must be called asynchronously</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>4.&#x65E5;&#x5FD7;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x8DEF;&#x5F84;&#x751F;&#x6210; logger &#x540D;&#x79F0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49; logger &#x8DEF;&#x5F84;&#x3001;&#x7EA7;&#x522B;&#x3001;&#x540D;&#x79F0;&#x7B49;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> turbo.util <span class="keyword">import</span> getLogger</span><br><span class="line"></span><br><span class="line">logger = getLogger(__file__)</span><br><span class="line"></span><br><span class="line">logger = getLogger(<span class="string">&apos;feed&apos;</span>, log_level=logging.DEBUG, log_path=<span class="string">&apos;/var/log/feed.log&apos;</span>)</span><br></pre></td></tr></table></figure></p>
+<p>5.&#x5B57;&#x7B26;&#x4E32;&#x5316; mongodb &#x6570;&#x636E;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> turbo.util <span class="keyword">import</span> to_str, to_list_str, to_dict_str, json_encode</span><br><span class="line"></span><br><span class="line">data  = json_encode(to_str(db.collection.find()))</span><br></pre></td></tr></table></figure>
+<p>6.&#x5FEB;&#x6377;&#x7684;&#x53C2;&#x6570;&#x63D0;&#x53D6;&#x548C;&#x8F6C;&#x6362;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">_get_params = {</span><br><span class="line">    <span class="string">&apos;need&apos;</span>: [</span><br><span class="line">        (<span class="string">&apos;skip&apos;</span>, int),</span><br><span class="line">        (<span class="string">&apos;limit&apos;</span>, int),</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&apos;option&apos;</span>: [</span><br><span class="line">        (<span class="string">&apos;did&apos;</span>, basestring, <span class="keyword">None</span>)</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x53EF;&#x8C03;&#x7528; self.parameters &#x5B8C;&#x6210;&#x53C2;&#x6570;&#x63D0;&#x53D6;&#x5DE5;&#x4F5C;&#xFF0C;&#x5FC5;&#x987B;&#x7684;&#x53C2;&#x6570;&#x4E0D;&#x5B58;&#x5728;&#x6216;&#x8F6C;&#x6362;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x503C;&#x4E3A; <code>None</code>&#xFF0C;&#x53EF;&#x9009;&#x7684;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x9ED8;&#x8BA4;&#x503C;&#x3002;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span> self.parameters[<span class="string">&apos;skip&apos;</span>] == <span class="number">0</span></span><br><span class="line"><span class="keyword">assert</span> self.parameters[<span class="string">&apos;did&apos;</span>] == <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<h2 id="&#x9002;&#x65F6;&#x800C;&#x5EFA;&#x7684;&#x8F6E;&#x5B50;-turbo"><a href="#&#x9002;&#x65F6;&#x800C;&#x5EFA;&#x7684;&#x8F6E;&#x5B50;-turbo" class="headerlink" title="&#x9002;&#x65F6;&#x800C;&#x5EFA;&#x7684;&#x8F6E;&#x5B50; turbo"></a>&#x9002;&#x65F6;&#x800C;&#x5EFA;&#x7684;&#x8F6E;&#x5B50; turbo</h2><p>turbo &#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x5E94;&#x7528;&#x4E86;&#x8FD1;&#x4E00;&#x5E74;&#xFF0C;&#x6700;&#x5927;&#x7684;&#x9879;&#x76EE;&#x65E5;&#x72EC;&#x7ACB;&#x7528;&#x6237;&#x8FC7;&#x767E;&#x4E07;&#xFF0C;&#x8FD8;&#x6709;&#x5341;&#x591A;&#x4E2A;&#x5927;&#x5927;&#x5C0F;&#x5C0F;&#x7684;&#x9879;&#x76EE;&#x7684;&#x540E;&#x7AEF;&#x4F7F;&#x7528;&#x4E86; turbo&#x3002;turbo &#x7ECF;&#x8FC7;&#x4E86;&#x6700;&#x521D;&#x7684;&#x8003;&#x9A8C;&#x3002; </p>
+<p>&#x540E;&#x7AEF;&#x7684;&#x8F6E;&#x5B50;&#x5BF9;&#x6BD4;&#x524D;&#x7AEF;&#x6765;&#x8BF4;&#xFF0C;&#x8FDC;&#x4E0D;&#x5982;&#x540E;&#x8005;&#x7684;&#x6765;&#x7684;&#x5FEB;&#x3001;&#x6765;&#x7684;&#x731B;&#xFF0C;&#x540E;&#x7AEF;&#x66F4;&#x9700;&#x8981;&#x957F;&#x4E45;&#x7684;&#x78E8;&#x7EC3;&#x548C;&#x96D5;&#x7422;&#xFF0C;&#x4E00;&#x70B9;&#x4E00;&#x6EF4;&#x90FD;&#x9700;&#x8981;&#x7ECF;&#x8FC7;&#x4E1A;&#x52A1;&#x7684;&#x9524;&#x70BC;&#x548C;&#x6570;&#x636E;&#x7684;&#x6D17;&#x793C;&#xFF0C;&#x624D;&#x80FD;&#x6E10;&#x6E10;&#x6210;&#x54C1;&#xFF0C;&#x6210;&#x4E3A;&#x89E3;&#x51B3;&#x7279;&#x5B9A;&#x95EE;&#x9898;&#x7684;&#x5229;&#x5668;&#x3002;&#x800C;&#x8F6E;&#x5B50;&#x7684;&#x521B;&#x9020;&#x66F4;&#x8981;&#x628A;&#x63E1;&#x65F6;&#x673A;&#xFF0C;&#x987A;&#x52BF;&#x800C;&#x53D1;&#x3002;&#x8FC7;&#x65E9;&#xFF0C;&#x8F6E;&#x5B50;&#x4E0D;&#x591F;&#x5065;&#x5168;&#xFF0C;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x4E0D;&#x591F;&#x5F7B;&#x5E95;&#xFF0C;&#x5F88;&#x96BE;&#x63A8;&#x5E7F;&#x4F7F;&#x7528;&#xFF0C;&#x751A;&#x81F3;&#x6709;&#x53EF;&#x80FD;&#x6210;&#x4E86;&#x7ECA;&#x811A;&#x77F3;&#xFF0C;&#x8FC7;&#x665A;&#xFF0C;&#x5F88;&#x591A;&#x95EE;&#x9898;&#x5DF2;&#x7ECF;&#x5BFC;&#x81F4;&#x4EE3;&#x7801;&#x79EF;&#x52B3;&#x6210;&#x75BE;&#xFF0C;&#x60F3;&#x8981;&#x5B8C;&#x5168;&#x6CBB;&#x6108;&#xFF0C;&#x5FC5;&#x7136;&#x4EE3;&#x4EF7;&#x4E0D;&#x83F2;&#x3002;</p>
+<p>turbo &#x6B63;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3; tornado &#x548C; mongodb &#x7C7B;&#x5E94;&#x7528;&#x5728;&#x9762;&#x5BF9;&#x4EE3;&#x7801;&#x89C4;&#x6A21;&#x5E9E;&#x5927;&#x3001;&#x591A;&#x4EBA;&#x534F;&#x540C;&#x6240;&#x906D;&#x9047;&#x7684;&#x79CD;&#x79CD;&#x95EE;&#x9898;&#x800C;&#x521B;&#x9020;&#x7684;&#xFF0C;&#x5B83;&#x7684;&#x7ACB;&#x8DB3;&#x70B9;&#x975E;&#x5E38;&#x5B9E;&#x9645;&#xFF0C;&#x6CA1;&#x6709;&#x70AB;&#x6280;&#xFF0C;&#x4E0D;&#x6D6E;&#x5938;&#xFF0C;&#x5207;&#x4E2D;&#x8981;&#x5BB3;&#xFF0C;&#x76F4;&#x9762;&#x95EE;&#x9898;&#x3002;</p>
+<p>turbo &#x7684;&#x5B9E;&#x7528;&#x5C31;&#x662F;&#x5B83;&#x7684;&#x534E;&#x4E3D;&#x6240;&#x5728;&#x3002;</p>
+<ul>
+<li>&#x4ED3;&#x5E93;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/wecatch/app-turbo" target="_blank" rel="external">Github</a> </li>
+<li>QQ&#x7FA4;&#x4EA4;&#x6D41;: 387199856</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/blog/categories/技术/">技术</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/blog/tags/python/">python</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'wecatch';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 wecatch
+  
+</p>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-79591400-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+  </div>
+</div>
+</body>
+</html>
