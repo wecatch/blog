@@ -9,6 +9,8 @@ categories:
 [三月沙](http://sanyuesha.com/about/) [原文链接](http://sanyuesha.com/2016/07/23/why-did-i-make-turbo/)
 
 
+> [turbo](https://github.com/wecatch/app-turbo) 与其说是一个 framework ，不如说是一个后端的解决方案。
+
 ## turbo 是如何诞生的?
 
 tornado 是异步非阻塞的 web 服务器，同时也是一个 web framework，功能简单但完全够用。
