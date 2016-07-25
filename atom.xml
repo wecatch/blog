@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://wecatch.me/"/>
-  <updated>2016-07-25T15:40:12.000Z</updated>
+  <updated>2016-07-25T15:57:11.000Z</updated>
   <id>http://wecatch.me/</id>
   
   <author>
@@ -20,9 +20,12 @@
     <link href="http://wecatch.me/2016/07/23/why-did-i-make-turbo/"/>
     <id>http://wecatch.me/2016/07/23/why-did-i-make-turbo/</id>
     <published>2016-07-23T11:05:01.000Z</published>
-    <updated>2016-07-25T15:40:12.000Z</updated>
+    <updated>2016-07-25T15:57:11.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;http://sanyuesha.com/about/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&amp;#x4E09;&amp;#x6708;&amp;#x6C99;&lt;/a&gt; &lt;a href=&quot;http://sanyuesha.com/2016/07/23/why-did-i-make-turbo/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&amp;#x539F;&amp;#x6587;&amp;#x94FE;&amp;#x63A5;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/wecatch/app-turbo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;turbo&lt;/a&gt; &amp;#x4E0E;&amp;#x5176;&amp;#x8BF4;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A; framework &amp;#xFF0C;&amp;#x4E0D;&amp;#x5982;&amp;#x8BF4;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x540E;&amp;#x7AEF;&amp;#x7684;&amp;#x89E3;&amp;#x51B3;&amp;#x65B9;&amp;#x6848;&amp;#x3002;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&quot;turbo-&amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x8BDE;&amp;#x751F;&amp;#x7684;&quot;&gt;&lt;a href=&quot;#turbo-&amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x8BDE;&amp;#x751F;&amp;#x7684;&quot; class=&quot;headerlink&quot; title=&quot;turbo &amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x8BDE;&amp;#x751F;&amp;#x7684;?&quot;&gt;&lt;/a&gt;turbo &amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x8BDE;&amp;#x751F;&amp;#x7684;?&lt;/h2&gt;&lt;p&gt;tornado &amp;#x662F;&amp;#x5F02;&amp;#x6B65;&amp;#x975E;&amp;#x963B;&amp;#x585E;&amp;#x7684; web &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#xFF0C;&amp;#x540C;&amp;#x65F6;&amp;#x4E5F;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A; web framework&amp;#xFF0C;&amp;#x529F;&amp;#x80FD;&amp;#x7B80;&amp;#x5355;&amp;#x4F46;&amp;#x5B8C;&amp;#x5168;&amp;#x591F;&amp;#x7528;&amp;#x3002;&lt;/p&gt;
 &lt;p&gt;&amp;#x539F;&amp;#x4E1C;&amp;#x5BB6;&amp;#x7684;&amp;#x6280;&amp;#x672F;&amp;#x6808;&amp;#x662F;&amp;#xFF1A;tornado&amp;#x3001;mongodb&amp;#x3001;redis&amp;#x3001;openresty&amp;#xFF0C;&amp;#x6700;&amp;#x5927;&amp;#x7684;&amp;#x670D;&amp;#x52A1;&amp;#x6BCF;&amp;#x5929;&amp;#x670D;&amp;#x52A1;&amp;#x7684;&amp;#x72EC;&amp;#x7ACB;&amp;#x7528;&amp;#x6237;&amp;#x6709;&amp;#x4E0A;&amp;#x767E;&amp;#x4E07;&amp;#x3002;&amp;#x65E9;&amp;#x671F;&amp;#x5927;&amp;#x90E8;&amp;#x5206;&amp;#x9879;&amp;#x76EE;&amp;#x5B8C;&amp;#x5168;&amp;#x4F7F;&amp;#x7528; tornado &amp;#x6700;&amp;#x539F;&amp;#x59CB;&amp;#x7684;&amp;#x65B9;&amp;#x5F0F;&amp;#x6784;&amp;#x5EFA;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A; main &amp;#x6587;&amp;#x4EF6;&amp;#x5305;&amp;#x542B;&amp;#x51E0;&amp;#x767E;&amp;#x4E2A;&amp;#x8DEF;&amp;#x7531;&amp;#xFF0C;&amp;#x6240;&amp;#x6709;&amp;#x7684; handler &amp;#x5206;&amp;#x5E03;&amp;#x5728;&amp;#x5341;&amp;#x51E0;&amp;#x4E2A;&amp;#x5927;&amp;#x5927;&amp;#x5C0F;&amp;#x5C0F;&amp;#x7684;&amp;#x6587;&amp;#x4EF6;&amp;#x5939;&amp;#x4E0B;&amp;#x9762;&amp;#xFF0C;&amp;#x9879;&amp;#x76EE;&amp;#x57FA;&amp;#x672C;&amp;#x7684;&amp;#x6587;&amp;#x4EF6;&amp;#x7ED3;&amp;#x6784;&amp;#x5305;&amp;#x542B;&amp;#xFF1A;&lt;/p&gt;
 &lt;ul&gt;
@@ -105,6 +108,9 @@
     <summary type="html">
     
       &lt;p&gt;&lt;a href=&quot;http://sanyuesha.com/about/&quot;&gt;&amp;#x4E09;&amp;#x6708;&amp;#x6C99;&lt;/a&gt; &lt;a href=&quot;http://sanyuesha.com/2016/07/23/why-did-i-make-turbo/&quot;&gt;&amp;#x539F;&amp;#x6587;&amp;#x94FE;&amp;#x63A5;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/wecatch/app-turbo&quot;&gt;turbo&lt;/a&gt; &amp;#x4E0E;&amp;#x5176;&amp;#x8BF4;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A; framework &amp;#xFF0C;&amp;#x4E0D;&amp;#x5982;&amp;#x8BF4;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x540E;&amp;#x7AEF;&amp;#x7684;&amp;#x89E3;&amp;#x51B3;&amp;#x65B9;&amp;#x6848;&amp;#x3002;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&quot;turbo-&amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x8BDE;&amp;#x751F;&amp;#x7684;&quot;&gt;&lt;a href=&quot;#turbo-&amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x8BDE;&amp;#x751F;&amp;#x7684;&quot; class=&quot;headerlink&quot; title=&quot;turbo &amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x8BDE;&amp;#x751F;&amp;#x7684;?&quot;&gt;&lt;/a&gt;turbo &amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x8BDE;&amp;#x751F;&amp;#x7684;?&lt;/h2&gt;&lt;p&gt;tornado &amp;#x662F;&amp;#x5F02;&amp;#x6B65;&amp;#x975E;&amp;#x963B;&amp;#x585E;&amp;#x7684; web &amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#xFF0C;&amp;#x540C;&amp;#x65F6;&amp;#x4E5F;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A; web framework&amp;#xFF0C;&amp;#x529F;&amp;#x80FD;&amp;#x7B80;&amp;#x5355;&amp;#x4F46;&amp;#x5B8C;&amp;#x5168;&amp;#x591F;&amp;#x7528;&amp;#x3002;&lt;/p&gt;
 &lt;p&gt;&amp;#x539F;&amp;#x4E1C;&amp;#x5BB6;&amp;#x7684;&amp;#x6280;&amp;#x672F;&amp;#x6808;&amp;#x662F;&amp;#xFF1A;tornado&amp;#x3001;mongodb&amp;#x3001;redis&amp;#x3001;openresty&amp;#xFF0C;&amp;#x6700;&amp;#x5927;&amp;#x7684;&amp;#x670D;&amp;#x52A1;&amp;#x6BCF;&amp;#x5929;&amp;#x670D;&amp;#x52A1;&amp;#x7684;&amp;#x72EC;&amp;#x7ACB;&amp;#x7528;&amp;#x6237;&amp;#x6709;&amp;#x4E0A;&amp;#x767E;&amp;#x4E07;&amp;#x3002;&amp;#x65E9;&amp;#x671F;&amp;#x5927;&amp;#x90E8;&amp;#x5206;&amp;#x9879;&amp;#x76EE;&amp;#x5B8C;&amp;#x5168;&amp;#x4F7F;&amp;#x7528; tornado &amp;#x6700;&amp;#x539F;&amp;#x59CB;&amp;#x7684;&amp;#x65B9;&amp;#x5F0F;&amp;#x6784;&amp;#x5EFA;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A; main &amp;#x6587;&amp;#x4EF6;&amp;#x5305;&amp;#x542B;&amp;#x51E0;&amp;#x767E;&amp;#x4E2A;&amp;#x8DEF;&amp;#x7531;&amp;#xFF0C;&amp;#x6240;&amp;#x6709;&amp;#x7684; handler &amp;#x5206;&amp;#x5E03;&amp;#x5728;&amp;#x5341;&amp;#x51E0;&amp;#x4E2A;&amp;#x5927;&amp;#x5927;&amp;#x5C0F;&amp;#x5C0F;&amp;#x7684;&amp;#x6587;&amp;#x4EF6;&amp;#x5939;&amp;#x4E0B;&amp;#x9762;&amp;#xFF0C;&amp;#x9879;&amp;#x76EE;&amp;#x57FA;&amp;#x672C;&amp;#x7684;&amp;#x6587;&amp;#x4EF6;&amp;#x7ED3;&amp;#x6784;&amp;#x5305;&amp;#x542B;&amp;#xFF1A;&lt;/p&gt;
 &lt;ul&gt;
