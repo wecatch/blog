@@ -9,9 +9,7 @@ categories:
 [三月沙](http://sanyuesha.com/about/) [原文链接](http://sanyuesha.com/2016/07/23/why-did-i-make-turbo/)
 
 
-> turbo 与其说是一个 framework ，不如说是一个后端的解决方案。
-
-## turbo 诞生的背景
+## turbo 是如何诞生的?
 
 tornado 是异步非阻塞的 web 服务器，同时也是一个 web framework，功能简单但完全够用。
 
@@ -26,13 +24,13 @@ tornado 是异步非阻塞的 web 服务器，同时也是一个 web framework�
 
 随着项目的代码越来越多，多个特性开发常常同时进行，开发人员经常要非常小心地应对代码的更改，即使如此，冲突依然时常发生，代码的可维护性和健壮性日益变差。
 
-创业公司由于业务面临飞速增长，多条业务线齐头并进，开发团队往往要维护很多个项目，有的项目生命周期很短，一次活动就结束了，有的项目要对外合作，随合作的结束而结束，有的项目服务新的产品，需要快速构建。不同的项目由不同的开发人员创建，创建项目的方式基本是 copy 旧项目，比较原始，容易出错。项目结构在不同的项目之间的差异随着业务的不同，差别渐渐凸显，重复的功能性代码和工具性代码也逐渐变多。
+创业公司由于业务面临飞速增长，多条业务线齐头并进，开发团队往往要同时维护很多个项目，有的项目生命周期很短，一次活动就结束了，有的项目要对外合作，随合作的结束而结束，有的项目服务新的产品，需要快速构建。不同的项目由不同的开发人员创建，创建项目的方式基本是 copy 旧项目，比较原始，容易出错。项目结构在不同的项目之间的差异随着业务的不同，差别渐渐凸显，重复的功能性代码和工具性代码也逐渐变多。
 
 
 <!-- more -->
 
 
-在这样的背景之下，影响后端开发效率和开发质量问题主要可以抽象为：
+在这样的背景之下，影响后端开发效率和开发质量主要问题可归纳为：
 
 - 大项目路由多，不易管理，不易变更
 - 项目目录分层不够，协同开发困难
@@ -43,7 +41,7 @@ tornado 是异步非阻塞的 web 服务器，同时也是一个 web framework�
 turbo 就是为解决这些问题而创建的，因而 turbo 更像是一个解决方案。
 
 
-## turbo 具有什么特性
+## turbo 具有什么特性？
 
 - 项目构建工具，一键生成项目目录和 app 结构
 - Session，提供灵活的接口，可以自定义存储方式
@@ -57,13 +55,110 @@ turbo 就是为解决这些问题而创建的，因而 turbo 更像是一个解�
 
 目录结构一键生成，不再是从旧项目拷贝，结构一致，高度统一，可维护性变强。
 
+```bash
+% turbo-admin -h                                                                                                                                                        
+turbo init project, server or app.
+    Usage:
+      turbo-admin (-h | --help)
+      turbo-admin startproject  <project>
+      turbo-admin startserver   <server>
+      turbo-admin startapp      <app>
+      turbo-admin index         <model_name>
+
+    Options:
+      -h,  --help        Show help document
+
+% turbo-admin startproject hello-turbo
+% cd hello-turbo
+% tree -L 2
+├── app-server
+│   ├── apps
+│   ├── main.py
+│   ├── setting.py
+│   ├── static
+│   └── templates
+├── config
+│   └── __init__.py
+├── db
+│   ├── __init__.py
+│   ├── conn.py
+│   └── setting.py
+├── helpers
+│   ├── __init__.py
+│   ├── settings.py
+│   └── user
+├── lib
+│   ├── __init__.py
+│   └── session.py
+├── models
+│   ├── __init__.py
+│   ├── base.py
+│   ├── settings.py
+│   └── user
+├── service
+│   └── __init__.py
+├── store
+│   ├── __init__.py
+│   ├── actions.py
+│   ├── modules
+│   └── mutation_types.py
+└── utils
+    └── __init__.py
+```
+
 #### Session
 
 自带 Session，存储方式可以自由变更，灵活性强。
 
+```python
+
+from turbo.session import HeaderObject, CookieObject
+from turbo.session import Store, RedisStore, DiskStore
+
+```
+
 #### 简单的 mongodb ORM 
 
 ORM 提供最基本的 collection 结构到代码的映射，表结构清晰明了，增删改均可灵活定义数据一致性检查。
+
+```python
+
+import turbo.model
+
+class Category(turbo.model.BaseModel):
+
+    """分类
+
+    field:
+        name: 名称
+        ename: 英文名
+        desc: 描述
+        tag: 标签列表
+        sn: 序号
+        nvideo: 视频数量
+        cover: 封面
+        uid: 创建用户
+        atime: 时间
+    """
+
+    name = 'category'
+    field = {
+        'name':             (basestring, ''),
+        'ename':            (basestring, ''),
+        'desc':             (basestring, ''),
+        'tag':              (list, []),
+
+        'sn':               (int, 0),
+        'nvideo':           (int, 0),
+
+        'cover':            (ObjectId, None),
+        'uid':              (ObjectId, None),
+
+        'atime':            (datetime, None),
+    }
+
+
+```
 
 #### 丰富的目录结构划分
 
@@ -122,7 +217,7 @@ def GET(self):
 
 #### 灵活的路由
 
-路由紧随业务代码，提供了
+路由紧随业务代码，turbo 提供了
 
 - register_group_urls
 - register_url
@@ -149,6 +244,7 @@ register.register_url('/v1/hello', app.ApiHandler)
 
 
 1.可以使用命令行一键生成所有 collection 的索引
+
 ```bash
 turbo-admin index <model_name>
 ```
@@ -197,25 +293,7 @@ def inc_qps():
 
 ```python
 
-
-def collection_method_call(turbo_connect_ins, name):
-    def outwrapper(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            if name in turbo_connect_ins._write_operators:
-                turbo_connect_ins._model_ins.write_action_call(name, *args, **kwargs)
-
-            if name in turbo_connect_ins._read_operators:
-                turbo_connect_ins._model_ins.read_action_call(name, *args, **kwargs)
-
-            return func(*args, **kwargs)
-
-        return wrapper
-
-    return outwrapper
-
-
-class Model(object):
+class Model(turbo.model.BaseModel):
 
     def write_action_call(self, name, *args, **kwargs):
         """
@@ -251,7 +329,7 @@ from turbo.util import to_str, to_list_str, to_dict_str, json_encode
 data  = json_encode(to_str(db.collection.find()))
 
 ```
-6.快捷的参数提取和转换
+6.参数快捷提取和转换
 
 ```python
 
@@ -275,18 +353,19 @@ assert self.parameters['skip'] == 0
 assert self.parameters['did'] == None
 ```
 
+> 除上面列举的之外，turbo 还具有很多实用的特性，仓库地址：https://github.com/wecatch/app-turbo
 
 ## 适时而建的轮子 turbo 
 
-turbo 在生产环境中应用了近一年，最大的项目日独立用户过百万，还有十多个大大小小的项目的后端使用了 turbo。turbo 经过了最初的考验。 
+turbo 在生产环境中应用了近一年，最大的项目日独立用户过百万，还有十多个大大小小的项目的后端使用了 turbo，已经经过了最初的考验。
 
-后端的轮子对比前端来说，远不如后者的来的快、来的猛，后端更需要长久的磨练和雕琢，一点一滴都需要经过业务的锤炼和数据的洗礼，才能渐渐成品，成为解决特定问题的利器。而轮子的创造更要把握时机，顺势而发。过早，轮子不够健全，解决问题不够彻底，很难推广使用，甚至有可能成了绊脚石，过晚，很多问题已经导致代码积劳成疾，想要完全治愈，必然代价不菲。
+后端的轮子相比前端来说，远不如后者的来的快、来的猛，后端需要更长久的磨练和雕琢，一点一滴都需要经过业务的锤炼和数据的洗礼，才能渐成佳品，成为解决特定问题的利器。而轮子的创造更要把握时机，顺势而发，过早，轮子不够健全，解决问题不够彻底，很难推广使用，甚至有可能成了绊脚石，过晚，很多问题已经导致代码积劳成疾，想要完全治愈，必然代价不菲。
 
 turbo 正是为了解决 tornado 和 mongodb 类应用在面对代码规模庞大、多人协同所遭遇的种种问题而创造的，它的立足点非常实际，没有炫技，不浮夸，切中要害，直面问题。
 
 turbo 的实用就是它的华丽所在。
 
 
-- 仓库地址：[Github](https://github.com/wecatch/app-turbo) 
+- [Github](https://github.com/wecatch/app-turbo) 
 - QQ群交流: 387199856
 
