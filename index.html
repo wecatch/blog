@@ -60,6 +60,83 @@
 
   
   
+    <h3 class="article-title"><a href="/blog/2016/08/20/distributed-lock-with-redis/"><span>如何用 redis 造一把分布式锁</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2016/08/20/distributed-lock-with-redis/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-08-20T04:37:42.000Z">
+          2016-08-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><a href="http://sanyuesha.com/about/">&#x4E09;&#x6708;&#x6C99;</a> <a href="http://sanyuesha.com/2016/08/20/distributed-lock-with-redis/">&#x539F;&#x6587;&#x94FE;&#x63A5;</a></p>
+<h2 id="&#x57FA;&#x672C;&#x6982;&#x5FF5;"><a href="#&#x57FA;&#x672C;&#x6982;&#x5FF5;" class="headerlink" title="&#x57FA;&#x672C;&#x6982;&#x5FF5;"></a>&#x57FA;&#x672C;&#x6982;&#x5FF5;</h2><p><strong>&#x9501;</strong></p>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Lock_(computer_science">wiki</a>:In computer science, a lock or mutex (from mutual exclusion) is a synchronization mechanism for enforcing limits on access to a resource in an environment where there are many threads of execution. A lock is designed to enforce a mutual exclusion concurrency control policy.<br>&#x5728;&#x8BA1;&#x7B97;&#x673A;&#x79D1;&#x5B66;&#x4E2D;&#xFF0C;&#x9501;&#x6216;&#x4E92;&#x65A5;&#x91CF;&#x662F;&#x4E00;&#x79CD;&#x540C;&#x6B65;&#x673A;&#x5236;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x5F3A;&#x884C;&#x9650;&#x5236;&#x5BF9;&#x8D44;&#x6E90;&#x8BBF;&#x95EE;&#x3002;&#x9501;&#x5E38;&#x88AB;&#x7528;&#x4E8E;&#x540C;&#x6B65;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#x3002;</p>
+</blockquote>
+<p>&#x7B80;&#x5355;&#x6765;&#x8BB2;&#xFF0C;&#x9501;&#x662F;&#x7528;&#x6765;&#x63A7;&#x5236;&#x591A;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x7684;&#x3002;&#x6BD4;&#x5982;&#x5F53;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x53EA;&#x5141;&#x8BB8;&#x5728;&#x4EFB;&#x610F;&#x65F6;&#x523B;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x7EBF;&#x7A0B;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;&#x5F53;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x8981;&#x8BBF;&#x95EE;&#x8D44;&#x6E90;&#x65F6;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x8981;&#x68C0;&#x67E5;&#x8BE5;&#x8BE5;&#x8D44;&#x6E90;&#x4E0A;&#x662F;&#x5426;&#x5B58;&#x5728;<code>&#x5199;&#x64CD;&#x4F5C;&#x9501;</code>&#xFF0C;&#x5982;&#x679C;&#x5B58;&#x5728;&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x7B49;&#x5F85;&#x9501;&#x7684;&#x91CA;&#x653E;&#x5E76;&#x83B7;&#x5F97;&#x9501;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x5BF9;&#x8D44;&#x6E90;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#x3002;</p>
+<p><strong>&#x60B2;&#x89C2;&#x9501;</strong></p>
+<p>&#x60B2;&#x89C2;&#x9501;&#x5047;&#x8BBE;&#x5728;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x4E8B;&#x52A1;&#x53D1;&#x751F;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x603B;&#x662F;&#x4F1A;&#x6709;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x4F1A;&#x66F4;&#x6539;&#x6240;&#x64CD;&#x4F5C;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x56E0;&#x6B64;&#x7EBF;&#x7A0B;&#x603B;&#x662F;&#x5BF9;&#x8D44;&#x6E90;&#x52A0;&#x9501;&#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x5BF9;&#x5176;&#x505A;&#x66F4;&#x6539;&#x3002;</p>
+<p><strong>&#x4E50;&#x89C2;&#x9501;</strong></p>
+<p>&#x4E50;&#x89C2;&#x9501;&#x5047;&#x8BBE;&#x5728;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x4E8B;&#x52A1;&#x53D1;&#x751F;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0D;&#x4E00;&#x5B9A;&#x4F1A;&#x6709;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x4F1A;&#x66F4;&#x6539;&#x8D44;&#x6E90;&#xFF0C;&#x4E00;&#x65E6;&#x53D1;&#x73B0;&#x8D44;&#x6E90;&#x88AB;&#x66F4;&#x6539;&#xFF0C;&#x5219;&#x505C;&#x6B62;&#x5F53;&#x524D;&#x4E8B;&#x52A1;&#x56DE;&#x6EDA;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x3002;</p>
+<p><strong>&#x5206;&#x5E03;&#x5F0F;&#x9501;</strong></p>
+<p>&#x5E38;&#x89C1;&#x7684;&#x9501;&#x6709;&#x591A;&#x7EBF;&#x7A0B;&#x9501;&#x3001;&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;&#x4E2D;&#x7684;&#x884C;&#x7EA7;&#x9501;&#x3001;&#x8868;&#x7EA7;&#x9501;&#x7B49;&#xFF0C;&#x8FD9;&#x4E9B;&#x9501;&#x7684;&#x7279;&#x70B9;&#x90FD;&#x662F;&#x53D1;&#x751F;&#x5728;&#x5355;&#x4E00;&#x7CFB;&#x7EDF;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x8FDB;&#x7A0B;&#x3001;&#x4E0D;&#x540C;&#x673A;&#x5668;&#x548C;&#x7CFB;&#x7EDF;&#x7B49;&#x5206;&#x5E03;&#x5F0F;&#x73AF;&#x5883;&#x4E2D;&#x63A7;&#x5236;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E00;&#x628A;&#x5206;&#x5E03;&#x5F0F;&#x9501;&#x3002;</p>
+<p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;&#x5206;&#x5E03;&#x5F0F;&#x9501;&#x5C31;&#x662F;&#x89E3;&#x51B3;&#x5206;&#x5E03;&#x5F0F;&#x73AF;&#x5883;&#x4E2D;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#x9650;&#x5236;&#x3002;</p>
+<h2 id="&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x4E00;&#x628A;&#x5206;&#x5E03;&#x5F0F;&#x9501;"><a href="#&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x4E00;&#x628A;&#x5206;&#x5E03;&#x5F0F;&#x9501;" class="headerlink" title="&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x4E00;&#x628A;&#x5206;&#x5E03;&#x5F0F;&#x9501;"></a>&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x4E00;&#x628A;&#x5206;&#x5E03;&#x5F0F;&#x9501;</h2>
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/blog/categories/技术/">技术</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/blog/tags/redis/">redis</a>, <a href="/blog/tags/lock/">lock</a>, <a href="/blog/tags/distributed/">distributed</a>
+  </span>
+
+
+        </div>
+        
+        <div class="article-meta pull-right">
+          <span>
+            <i class="icon-comments"></i>
+            <span>
+              <a href="http://wecatch.me/blog/2016/08/20/distributed-lock-with-redis/#comment">评论</a>
+            </span>
+          </span>
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
     <h3 class="article-title"><a href="/blog/2016/07/23/why-did-i-make-turbo/"><span>我为什么创造了 turbo 这个后端的轮子</span></a></h3>
   
 
