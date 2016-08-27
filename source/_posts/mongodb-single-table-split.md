@@ -83,9 +83,7 @@ categories:
 需要注意的是，选用 redis 可能带来的问题是 redis 宕机会导致迁移中的数据无法回复(redis 未开持久化操作或其他原因导致数据不能恢复)，只要用户在旧表中有数据存在，则用户删除或新增数据的操作一定也要在旧表中执行，再次恢复迁移时，要清除新表数据之后才能正常进行。
 
 
-<img src="/images/table-split.png" alt="迁移流程图" width="800" >
-
-
+<img src="http://wecatch.me/blog/images/table-split.png" alt="迁移流程图">
 
 
 
