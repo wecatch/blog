@@ -36,7 +36,7 @@ python 执行一个文件，无论执行的方式是绝对路径还是相对路�
 import os
 import sys
 
-print sys.path
+print sys.path[0]
 
 ```
 
